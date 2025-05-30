@@ -1,0 +1,19 @@
+{
+    "app": {
+        "version": "1.0.0-mvp",
+        "theme": "dark",
+        "auto_save": true
+    },
+    "apis": {
+        "shodan_key": "",
+        "timeout": 30
+    },
+    "network": {
+        "default_ports": "1-1000",
+        "max_threads": 50
+    },
+    "paths": {
+        "exports": "./exports/",
+        "logs": "./logs/"
+    }
+}

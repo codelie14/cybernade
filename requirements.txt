@@ -1,0 +1,8 @@
+PyQt5==5.15.9
+python-nmap==0.7.1
+python-whois==0.8.0
+dnspython==2.3.0
+requests==2.31.0
+shodan==1.29.1
+cryptography==41.0.3
+colorama==0.4.6 
