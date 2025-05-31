@@ -13,7 +13,7 @@ from PyQt5.QtGui import QIcon, QTextCursor
 
 from core.config import config
 from core.database import db
-from gui.components import LogWidget
+from gui.components import LogWidget, OSINTWidget
 
 class MainWindow(QMainWindow):
     """Main window of the CYBERNADE application."""
@@ -169,9 +169,12 @@ class MainWindow(QMainWindow):
     
     def _setup_osint_tab(self):
         """Set up the OSINT tab."""
-        # Add a placeholder message for now - to be implemented in modules/osint.py
+        # Create layout
         layout = QVBoxLayout(self.osint_tab)
-        layout.addWidget(QLabel("OSINT module will be implemented in Phase 2"))
+        
+        # Create OSINT widget
+        self.osint_widget = OSINTWidget()
+        layout.addWidget(self.osint_widget)
     
     def _setup_network_tab(self):
         """Set up the Network tab."""
@@ -231,12 +234,16 @@ class MainWindow(QMainWindow):
         current_tab = self.tab_widget.currentWidget()
         tab_name = self.tab_widget.tabText(self.tab_widget.currentIndex())
         
-        # Show a message for the MVP since export functionality will be implemented with each module
-        QMessageBox.information(
-            self,
-            "Export Results",
-            f"Export functionality for {tab_name} will be implemented with the module"
-        )
+        # If in OSINT tab, use its export function
+        if tab_name == "OSINT":
+            self.osint_widget._export_results()
+        else:
+            # Show a message for the MVP since export functionality will be implemented with each module
+            QMessageBox.information(
+                self,
+                "Export Results",
+                f"Export functionality for {tab_name} will be implemented with the module"
+            )
         
         logging.info(f"Export requested for {tab_name} tab")
     

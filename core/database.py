@@ -6,6 +6,7 @@ import json
 import os
 import logging
 from datetime import datetime
+from utils.helpers import get_timestamp
 
 class Database:
     """SQLite database manager for CYBERNADE."""
@@ -94,7 +95,7 @@ class Database:
             conn = self._get_connection()
             cursor = conn.cursor()
             
-            timestamp = datetime.now().isoformat()
+            timestamp = get_timestamp()
             details_json = json.dumps(details) if details else None
             
             cursor.execute(
@@ -128,7 +129,7 @@ class Database:
             conn = self._get_connection()
             cursor = conn.cursor()
             
-            timestamp = datetime.now().isoformat()
+            timestamp = get_timestamp()
             results_json = json.dumps(results)
             
             cursor.execute(
@@ -162,7 +163,7 @@ class Database:
             conn = self._get_connection()
             cursor = conn.cursor()
             
-            timestamp = datetime.now().isoformat()
+            timestamp = get_timestamp()
             results_json = json.dumps(results)
             
             cursor.execute(
