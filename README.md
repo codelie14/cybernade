@@ -1,58 +1,46 @@
-# CYBERNADE
+# Getting Started with Create React App
 
-CYBERNADE is a versatile cybersecurity toolkit for security professionals and enthusiasts.
+This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
-## 🚀 Features (MVP)
+## Available Scripts
 
-- **OSINT Module**: Look up information about IP addresses, domains, and emails
-- **Network Module**: Scan networks for open ports and services
-- **Crypto Module**: Hash calculation, basic encryption, and password generation
+In the project directory, you can run:
 
-## 📋 Requirements
+### `npm start`
 
-- Python 3.10+
-- PyQt5
-- Additional dependencies as listed in requirements.txt
+Runs the app in the development mode.\
+Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
 
-## 🔧 Installation
+The page will reload if you make edits.\
+You will also see any lint errors in the console.
 
-1. Clone the repository:
-```bash
-git clone https://github.com/yourusername/cybernade.git
-cd cybernade
-```
+### `npm test`
 
-2. Create and activate a virtual environment (recommended):
-```bash
-# Windows
-python -m venv venv
-venv\Scripts\activate
+Launches the test runner in the interactive watch mode.\
+See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
 
-# Linux/Mac
-python3 -m venv venv
-source venv/bin/activate
-```
+### `npm run build`
 
-3. Install dependencies:
-```bash
-pip install -r requirements.txt
-```
+Builds the app for production to the `build` folder.\
+It correctly bundles React in production mode and optimizes the build for the best performance.
 
-## 🏃 Usage
+The build is minified and the filenames include the hashes.\
+Your app is ready to be deployed!
 
-Run the application:
-```bash
-python main.py
-```
+See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
 
-## 📝 License
+### `npm run eject`
 
-This project is licensed under the MIT License - see the LICENSE file for details.
+**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
 
-## ⚠️ Disclaimer
+If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
 
-CYBERNADE is an educational and security testing tool. Always use responsibly and only on systems you own or have permission to test. The developers are not responsible for any misuse of this software.
+Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
 
-## 📝 Project Status
+You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
 
-This is the Minimum Viable Product (MVP) version of CYBERNADE. The application is currently under active development. See the planning document in the docs directory for more information.
+## Learn More
+
+You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+
+To learn React, check out the [React documentation](https://reactjs.org/).

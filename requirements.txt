@@ -1,8 +1,0 @@
-PyQt5
-python-nmap
-python-whois
-dnspython
-requests
-shodan
-cryptography
-colorama 

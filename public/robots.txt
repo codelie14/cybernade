@@ -1,0 +1,35 @@
+# Cybernade - Plateforme de Cybersécurité
+# https://cybernade.com
+
+# Autorise tous les robots d'exploration à accéder à tout le site
+User-agent: *
+Allow: /
+
+# Sitemap
+Sitemap: https://cybernade.com/sitemap.xml
+
+# Exclure les pages d'administration ou privées
+Disallow: /admin/
+Disallow: /private/
+Disallow: /api/
+Disallow: /backend/
+Disallow: /login
+Disallow: /register
+Disallow: /password-reset
+Disallow: /dashboard
+
+# Exclure les pages temporaires ou de test
+Disallow: /test/
+Disallow: /dev/
+Disallow: /staging/
+Disallow: /beta/
+
+# Règles spécifiques pour certains robots
+User-agent: GPTBot
+Disallow: /
+
+User-agent: ChatGPT-User
+Disallow: /
+
+# Taux de crawl recommandé
+Crawl-delay: 10

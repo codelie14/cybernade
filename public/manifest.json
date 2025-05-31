@@ -1,0 +1,30 @@
+{
+  "short_name": "Cybernade",
+  "name": "Cybernade - Plateforme de Cybersécurité",
+  "description": "Outils professionnels de cybersécurité pour la localisation IP, traçage téléphonique et tests de pénétration",
+  "icons": [
+    {
+      "src": "favicon.ico",
+      "sizes": "64x64 32x32 24x24 16x16",
+      "type": "image/x-icon"
+    },
+    {
+      "src": "logo192.png",
+      "type": "image/png",
+      "sizes": "192x192",
+      "purpose": "any maskable"
+    },
+    {
+      "src": "logo512.png",
+      "type": "image/png",
+      "sizes": "512x512",
+      "purpose": "any maskable"
+    }
+  ],
+  "start_url": ".",
+  "display": "standalone",
+  "theme_color": "#1e40af",
+  "background_color": "#f3f4f6",
+  "orientation": "portrait",
+  "categories": ["security", "utilities", "productivity"]
+}

@@ -1,0 +1,20 @@
+/* App.css - Styles spécifiques à l'application */
+
+.App {
+  text-align: center;
+}
+
+.App-header {
+  background-color: #1e40af;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  font-size: calc(10px + 2vmin);
+  color: white;
+}
+
+.App-link {
+  color: #6366f1;
+} 
