@@ -1,205 +1,190 @@
-import React, { useState } from 'react';
+import React from 'react';
 import { Link } from 'react-router-dom';
+import SEO from '../components/SEO';
 
 interface Tool {
-  id: number;
+  id: string;
   title: string;
   description: string;
   icon: React.ReactNode;
   link: string;
-  category: string;
 }
 
 const SecurityTools: React.FC = () => {
-  const [activeCategory, setActiveCategory] = useState<string>('all');
-  
   const tools: Tool[] = [
     {
-      id: 1,
+      id: 'password-analyzer',
       title: 'Analyseur de Mot de Passe',
-      description: 'Vérifiez la force de vos mots de passe et identifiez les vulnérabilités potentielles.',
+      description: 'Vérifiez la force de vos mots de passe et obtenez des recommandations pour les améliorer.',
       icon: (
-        <svg xmlns="http://www.w3.org/2000/svg" className="h-10 w-10" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 15v2m-6 4h12a2 2 0 002-2v-6a2 2 0 00-2-2H6a2 2 0 00-2 2v6a2 2 0 002 2zm10-10V7a4 4 0 00-8 0v4h8z" />
+        <svg xmlns="http://www.w3.org/2000/svg" className="h-8 w-8 text-primary" viewBox="0 0 20 20" fill="currentColor">
+          <path fillRule="evenodd" d="M5 9V7a5 5 0 0110 0v2a2 2 0 012 2v5a2 2 0 01-2 2H5a2 2 0 01-2-2v-5a2 2 0 012-2zm8-2v2H7V7a3 3 0 016 0z" clipRule="evenodd" />
         </svg>
       ),
-      link: '/security-tools/password-analyzer',
-      category: 'authentication'
+      link: '/security-tools/password-analyzer'
     },
     {
-      id: 2,
+      id: 'password-generator',
       title: 'Générateur de Mot de Passe',
-      description: 'Créez des mots de passe forts et aléatoires pour sécuriser vos comptes.',
+      description: 'Créez des mots de passe forts et sécurisés avec des options personnalisables.',
       icon: (
-        <svg xmlns="http://www.w3.org/2000/svg" className="h-10 w-10" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4 4v5h.582m15.356 2A8.001 8.001 0 004.582 9m0 0H9m11 11v-5h-.581m0 0a8.003 8.003 0 01-15.357-2m15.357 2H15" />
+        <svg xmlns="http://www.w3.org/2000/svg" className="h-8 w-8 text-primary" viewBox="0 0 20 20" fill="currentColor">
+          <path fillRule="evenodd" d="M18 8a6 6 0 01-7.743 5.743L10 14l-1 1-1 1H6v2H2v-4l4.257-4.257A6 6 0 1118 8zm-6-4a1 1 0 100 2 2 2 0 012 2 1 1 0 102 0 4 4 0 00-4-4z" clipRule="evenodd" />
         </svg>
       ),
-      link: '/security-tools/password-generator',
-      category: 'authentication'
+      link: '/security-tools/password-generator'
     },
     {
-      id: 3,
+      id: 'data-breach-checker',
       title: 'Vérificateur de Fuite de Données',
-      description: 'Vérifiez si vos informations personnelles ont été compromises dans des fuites de données connues.',
+      description: 'Vérifiez si votre adresse e-mail a été compromise dans des fuites de données connues.',
       icon: (
-        <svg xmlns="http://www.w3.org/2000/svg" className="h-10 w-10" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z" />
+        <svg xmlns="http://www.w3.org/2000/svg" className="h-8 w-8 text-primary" viewBox="0 0 20 20" fill="currentColor">
+          <path fillRule="evenodd" d="M18 10a8 8 0 11-16 0 8 8 0 0116 0zm-7 4a1 1 0 11-2 0 1 1 0 012 0zm-1-9a1 1 0 00-1 1v4a1 1 0 102 0V6a1 1 0 00-1-1z" clipRule="evenodd" />
         </svg>
       ),
-      link: '/security-tools/data-breach-checker',
-      category: 'privacy'
+      link: '/security-tools/data-breach-checker'
     },
     {
-      id: 4,
+      id: 'vulnerability-scanner',
       title: 'Analyseur de Vulnérabilités',
-      description: 'Identifiez les vulnérabilités potentielles dans votre système ou votre réseau.',
+      description: 'Analysez les vulnérabilités de sécurité potentielles d\'un site web ou d\'une application.',
       icon: (
-        <svg xmlns="http://www.w3.org/2000/svg" className="h-10 w-10" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 11H5m14 0a2 2 0 012 2v6a2 2 0 01-2 2H5a2 2 0 01-2-2v-6a2 2 0 012-2m14 0V9a2 2 0 00-2-2M5 11V9a2 2 0 012-2m0 0V5a2 2 0 012-2h6a2 2 0 012 2v2M7 7h10" />
+        <svg xmlns="http://www.w3.org/2000/svg" className="h-8 w-8 text-primary" viewBox="0 0 20 20" fill="currentColor">
+          <path fillRule="evenodd" d="M3 5a2 2 0 012-2h10a2 2 0 012 2v8a2 2 0 01-2 2h-2.22l.123.489.804.804A1 1 0 0113 18H7a1 1 0 01-.707-1.707l.804-.804L7.22 15H5a2 2 0 01-2-2V5zm5.771 7H5V5h10v7H8.771z" clipRule="evenodd" />
         </svg>
       ),
-      link: '/security-tools/vulnerability-scanner',
-      category: 'network'
+      link: '/security-tools/vulnerability-scanner'
     },
     {
-      id: 5,
+      id: 'file-encryption',
       title: 'Cryptage de Fichiers',
-      description: 'Chiffrez vos fichiers sensibles pour les protéger contre les accès non autorisés.',
+      description: 'Chiffrez et déchiffrez vos fichiers en toute sécurité, directement dans votre navigateur.',
       icon: (
-        <svg xmlns="http://www.w3.org/2000/svg" className="h-10 w-10" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M8 7v8a2 2 0 002 2h6M8 7V5a2 2 0 012-2h4.586a1 1 0 01.707.293l4.414 4.414a1 1 0 01.293.707V15a2 2 0 01-2 2h-2M8 7H6a2 2 0 00-2 2v10a2 2 0 002 2h8a2 2 0 002-2v-2" />
+        <svg xmlns="http://www.w3.org/2000/svg" className="h-8 w-8 text-primary" viewBox="0 0 20 20" fill="currentColor">
+          <path fillRule="evenodd" d="M4 4a2 2 0 012-2h4.586A2 2 0 0112 2.586L15.414 6A2 2 0 0116 7.414V16a2 2 0 01-2 2H6a2 2 0 01-2-2V4z" clipRule="evenodd" />
+          <path fillRule="evenodd" d="M8 11a1 1 0 100-2 1 1 0 000 2zm0-4a1 1 0 100-2 1 1 0 000 2z" clipRule="evenodd" />
         </svg>
       ),
-      link: '/security-tools/file-encryption',
-      category: 'encryption'
+      link: '/security-tools/file-encryption'
     },
     {
-      id: 6,
+      id: 'ssl-cert-manager',
       title: 'Gestionnaire de Certificats SSL',
-      description: 'Vérifiez et gérez les certificats SSL pour sécuriser vos connexions web.',
+      description: 'Vérifiez et analysez les certificats SSL de n\'importe quel site web.',
       icon: (
-        <svg xmlns="http://www.w3.org/2000/svg" className="h-10 w-10" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z" />
+        <svg xmlns="http://www.w3.org/2000/svg" className="h-8 w-8 text-primary" viewBox="0 0 20 20" fill="currentColor">
+          <path fillRule="evenodd" d="M2.166 4.999A11.954 11.954 0 0010 1.944 11.954 11.954 0 0017.834 5c.11.65.166 1.32.166 2.001 0 5.225-3.34 9.67-8 11.317C5.34 16.67 2 12.225 2 7c0-.682.057-1.35.166-2.001zm11.541 3.708a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clipRule="evenodd" />
         </svg>
       ),
-      link: '/security-tools/ssl-certificate-manager',
-      category: 'encryption'
+      link: '/security-tools/ssl-cert-manager'
     },
     {
-      id: 7,
+      id: 'network-analyzer',
       title: 'Analyseur de Trafic Réseau',
-      description: 'Surveillez et analysez le trafic réseau pour détecter les activités suspectes.',
+      description: 'Analysez votre connexion réseau et identifiez les problèmes potentiels.',
       icon: (
-        <svg xmlns="http://www.w3.org/2000/svg" className="h-10 w-10" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z" />
+        <svg xmlns="http://www.w3.org/2000/svg" className="h-8 w-8 text-primary" viewBox="0 0 20 20" fill="currentColor">
+          <path fillRule="evenodd" d="M3 4a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1zm0 4a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1zm0 4a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1zm0 4a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1z" clipRule="evenodd" />
         </svg>
       ),
-      link: '/security-tools/network-traffic-analyzer',
-      category: 'network'
+      link: '/security-tools/network-analyzer'
     },
     {
-      id: 8,
+      id: 'malware-scanner',
       title: 'Scanner de Malware',
-      description: 'Détectez et supprimez les logiciels malveillants de votre système.',
+      description: 'Analysez vos fichiers pour détecter les logiciels malveillants et protégez votre système.',
       icon: (
-        <svg xmlns="http://www.w3.org/2000/svg" className="h-10 w-10" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z" />
+        <svg xmlns="http://www.w3.org/2000/svg" className="h-8 w-8 text-primary" viewBox="0 0 20 20" fill="currentColor">
+          <path fillRule="evenodd" d="M6.625 2.655A9 9 0 0119 11a1 1 0 11-2 0 7 7 0 00-9.625-6.492 1 1 0 11-.75-1.853zM4.662 4.959A1 1 0 014.75 6.37 6.97 6.97 0 003 11a1 1 0 11-2 0 8.97 8.97 0 012.25-5.953 1 1 0 011.412-.088z" clipRule="evenodd" />
+          <path fillRule="evenodd" d="M5 11a5 5 0 1110 0 1 1 0 11-2 0 3 3 0 10-6 0c0 1.677-.345 3.276-.968 4.729a1 1 0 11-1.838-.789A9.964 9.964 0 005 11z" clipRule="evenodd" />
         </svg>
       ),
-      link: '/security-tools/malware-scanner',
-      category: 'antivirus'
+      link: '/security-tools/malware-scanner'
     }
   ];
 
-  const categories = [
-    { id: 'all', name: 'Tous' },
-    { id: 'authentication', name: 'Authentification' },
-    { id: 'privacy', name: 'Confidentialité' },
-    { id: 'network', name: 'Réseau' },
-    { id: 'encryption', name: 'Chiffrement' },
-    { id: 'antivirus', name: 'Antivirus' }
-  ];
-
-  const filteredTools = activeCategory === 'all' 
-    ? tools 
-    : tools.filter(tool => tool.category === activeCategory);
-
   return (
-    <div className="min-h-screen bg-gray-50 py-12">
-      <div className="container mx-auto px-4">
-        <h1 className="text-3xl font-bold text-center mb-8">Outils de Sécurité Informatique</h1>
-        
-        {/* Categories Filter */}
-        <div className="flex flex-wrap justify-center mb-10 gap-2">
-          {categories.map(category => (
-            <button
-              key={category.id}
-              onClick={() => setActiveCategory(category.id)}
-              className={`px-4 py-2 rounded-full text-sm font-medium transition-colors ${
-                activeCategory === category.id
-                  ? 'bg-primary text-white'
-                  : 'bg-white text-gray-700 hover:bg-gray-100'
-              }`}
-            >
-              {category.name}
-            </button>
-          ))}
-        </div>
-        
-        {/* Tools Grid */}
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-          {filteredTools.map(tool => (
-            <div key={tool.id} className="bg-white rounded-lg shadow-md overflow-hidden hover:shadow-lg transition-shadow">
-              <div className="p-6">
-                <div className="text-primary mb-4">{tool.icon}</div>
-                <h3 className="text-xl font-semibold mb-2">{tool.title}</h3>
-                <p className="text-gray-600 mb-4">{tool.description}</p>
-                <Link to={tool.link} className="text-accent hover:text-primary font-medium flex items-center">
-                  Accéder à l'outil
-                  <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5 ml-1" viewBox="0 0 20 20" fill="currentColor">
-                    <path fillRule="evenodd" d="M12.293 5.293a1 1 0 011.414 0l4 4a1 1 0 010 1.414l-4 4a1 1 0 01-1.414-1.414L14.586 11H3a1 1 0 110-2h11.586l-2.293-2.293a1 1 0 010-1.414z" clipRule="evenodd" />
-                  </svg>
-                </Link>
-              </div>
-            </div>
-          ))}
-        </div>
-        
-        {/* Coming Soon Section */}
-        <div className="mt-16">
-          <h2 className="text-2xl font-bold text-center mb-6">Bientôt Disponible</h2>
-          <div className="bg-white rounded-lg shadow-md p-6 text-center">
-            <p className="text-gray-600 mb-4">
-              Nous travaillons constamment à l'ajout de nouveaux outils pour renforcer votre sécurité informatique.
-              Revenez bientôt pour découvrir nos dernières fonctionnalités.
+    <>
+      <SEO 
+        title="Outils de Sécurité | Cybernade"
+        description="Découvrez nos outils de sécurité informatique gratuits pour protéger vos données et renforcer votre sécurité en ligne."
+        keywords="outils sécurité, cybersécurité, protection données, sécurité en ligne, outils gratuits"
+      />
+      
+      <div className="min-h-screen bg-gray-50 py-12">
+        <div className="container mx-auto px-4">
+          <div className="max-w-4xl mx-auto">
+            <h1 className="text-3xl font-bold text-center mb-2">Outils de Sécurité</h1>
+            <p className="text-center text-gray-600 mb-8">
+              Des outils gratuits pour vous aider à protéger vos données et renforcer votre sécurité en ligne.
             </p>
-            <div className="flex justify-center space-x-2">
-              <span className="bg-gray-200 text-gray-700 px-3 py-1 rounded-full text-sm">Firewall Personnel</span>
-              <span className="bg-gray-200 text-gray-700 px-3 py-1 rounded-full text-sm">VPN Sécurisé</span>
-              <span className="bg-gray-200 text-gray-700 px-3 py-1 rounded-full text-sm">Gestionnaire de Mots de Passe</span>
+            
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+              {tools.map((tool) => (
+                <Link 
+                  key={tool.id}
+                  to={tool.link}
+                  className="bg-white rounded-lg shadow-md p-6 hover:shadow-lg transition-shadow flex"
+                >
+                  <div className="mr-4 flex-shrink-0">
+                    {tool.icon}
+                  </div>
+                  <div>
+                    <h2 className="text-xl font-semibold mb-2">{tool.title}</h2>
+                    <p className="text-gray-600">{tool.description}</p>
+                  </div>
+                </Link>
+              ))}
             </div>
-          </div>
-        </div>
-        
-        {/* Disclaimer */}
-        <div className="mt-10 bg-yellow-50 border-l-4 border-yellow-400 p-4">
-          <div className="flex">
-            <div className="flex-shrink-0">
-              <svg className="h-5 w-5 text-yellow-400" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor">
-                <path fillRule="evenodd" d="M8.257 3.099c.765-1.36 2.722-1.36 3.486 0l5.58 9.92c.75 1.334-.213 2.98-1.742 2.98H4.42c-1.53 0-2.493-1.646-1.743-2.98l5.58-9.92zM11 13a1 1 0 11-2 0 1 1 0 012 0zm-1-8a1 1 0 00-1 1v3a1 1 0 002 0V6a1 1 0 00-1-1z" clipRule="evenodd" />
-              </svg>
-            </div>
-            <div className="ml-3">
-              <p className="text-sm text-yellow-700">
-                Ces outils sont fournis à des fins éducatives et de protection personnelle uniquement. 
-                Assurez-vous de respecter toutes les lois et réglementations applicables lors de leur utilisation.
-              </p>
+            
+            <div className="mt-12 bg-white rounded-lg shadow-md p-6">
+              <h2 className="text-xl font-semibold mb-4">Pourquoi la sécurité informatique est-elle importante ?</h2>
+              
+              <div className="space-y-4">
+                <p>
+                  La sécurité informatique est devenue un enjeu majeur dans notre monde numérique. 
+                  Avec l'augmentation des cyberattaques et des violations de données, il est essentiel 
+                  de prendre des mesures pour protéger vos informations personnelles et professionnelles.
+                </p>
+                
+                <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+                  <div>
+                    <h3 className="text-lg font-medium mb-2">Menaces courantes</h3>
+                    <ul className="list-disc pl-5 space-y-1 text-sm">
+                      <li>Phishing et ingénierie sociale</li>
+                      <li>Logiciels malveillants (malware)</li>
+                      <li>Rançongiciels (ransomware)</li>
+                      <li>Vol d'identité</li>
+                      <li>Fuites de données</li>
+                      <li>Attaques par force brute</li>
+                    </ul>
+                  </div>
+                  
+                  <div>
+                    <h3 className="text-lg font-medium mb-2">Bonnes pratiques</h3>
+                    <ul className="list-disc pl-5 space-y-1 text-sm">
+                      <li>Utilisez des mots de passe forts et uniques</li>
+                      <li>Activez l'authentification à deux facteurs</li>
+                      <li>Mettez à jour régulièrement vos logiciels</li>
+                      <li>Soyez vigilant face aux emails suspects</li>
+                      <li>Chiffrez vos données sensibles</li>
+                      <li>Effectuez des sauvegardes régulières</li>
+                    </ul>
+                  </div>
+                </div>
+                
+                <p className="text-sm text-gray-600 mt-4">
+                  Nos outils de sécurité sont conçus pour vous aider à mettre en œuvre ces bonnes pratiques 
+                  et à renforcer votre sécurité en ligne. Ils sont gratuits, faciles à utiliser et ne 
+                  nécessitent pas d'installation.
+                </p>
+              </div>
             </div>
           </div>
         </div>
       </div>
-    </div>
+    </>
   );
 };
 

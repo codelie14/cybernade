@@ -1,5 +1,7 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import axios from 'axios';
+import { MapContainer, TileLayer, Marker, Popup } from 'react-leaflet';
+import 'leaflet/dist/leaflet.css';
 
 interface IPInfo {
   ip: string;
@@ -19,6 +21,20 @@ const IPLocator: React.FC = () => {
   const [ipInfo, setIpInfo] = useState<IPInfo | null>(null);
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState<string | null>(null);
+
+  // Correction pour les icônes Leaflet
+  useEffect(() => {
+    // Solution pour le problème d'icônes dans React-Leaflet
+    const L = require('leaflet');
+    
+    delete L.Icon.Default.prototype._getIconUrl;
+    
+    L.Icon.Default.mergeOptions({
+      iconRetinaUrl: require('leaflet/dist/images/marker-icon-2x.png').default,
+      iconUrl: require('leaflet/dist/images/marker-icon.png').default,
+      shadowUrl: require('leaflet/dist/images/marker-shadow.png').default
+    });
+  }, []);
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
@@ -136,12 +152,27 @@ const IPLocator: React.FC = () => {
                   </div>
                 </div>
                 
-                {/* Map placeholder - Dans un environnement réel, vous pourriez intégrer Google Maps ou Leaflet */}
-                <div className="mt-6 bg-gray-100 rounded-lg p-4 h-64 flex items-center justify-center border border-gray-200">
-                  <p className="text-gray-500 text-center">
-                    Carte interactive à implémenter avec Google Maps ou Leaflet<br />
-                    Coordonnées: {ipInfo.latitude}, {ipInfo.longitude}
-                  </p>
+                {/* Carte OpenStreetMap avec Leaflet */}
+                <div className="mt-6 h-64 rounded-lg overflow-hidden border border-gray-200">
+                  <MapContainer 
+                    center={[ipInfo.latitude, ipInfo.longitude]} 
+                    zoom={13} 
+                    style={{ height: '100%', width: '100%' }}
+                  >
+                    <TileLayer
+                      attribution='&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
+                      url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
+                    />
+                    <Marker position={[ipInfo.latitude, ipInfo.longitude]}>
+                      <Popup>
+                        <div>
+                          <strong>{ipInfo.ip}</strong><br />
+                          {ipInfo.city}, {ipInfo.country_name}<br />
+                          {ipInfo.org}
+                        </div>
+                      </Popup>
+                    </Marker>
+                  </MapContainer>
                 </div>
               </div>
             </div>

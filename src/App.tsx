@@ -14,7 +14,20 @@ const IPLocator = lazy(() => import('./pages/IPLocator'));
 const PhoneTracker = lazy(() => import('./pages/PhoneTracker'));
 const SecurityTools = lazy(() => import('./pages/SecurityTools'));
 const Pentest = lazy(() => import('./pages/Pentest'));
+const TermsOfService = lazy(() => import('./pages/TermsOfService'));
+const PrivacyPolicy = lazy(() => import('./pages/PrivacyPolicy'));
+const Disclaimer = lazy(() => import('./pages/Disclaimer'));
 const NotFound = lazy(() => import('./pages/NotFound'));
+
+// Outils de sécurité
+const PasswordAnalyzer = lazy(() => import('./pages/tools/PasswordAnalyzer'));
+const PasswordGenerator = lazy(() => import('./pages/tools/PasswordGenerator'));
+const DataBreachChecker = lazy(() => import('./pages/tools/DataBreachChecker'));
+const VulnerabilityScanner = lazy(() => import('./pages/tools/VulnerabilityScanner'));
+const FileEncryption = lazy(() => import('./pages/tools/FileEncryption'));
+const SSLCertManager = lazy(() => import('./pages/tools/SSLCertManager'));
+const NetworkAnalyzer = lazy(() => import('./pages/tools/NetworkAnalyzer'));
+const MalwareScanner = lazy(() => import('./pages/tools/MalwareScanner'));
 
 function App() {
   return (
@@ -40,7 +53,20 @@ function App() {
               <Route path="/phone-tracker" element={<PhoneTracker />} />
               <Route path="/security-tools" element={<SecurityTools />} />
               <Route path="/pentest" element={<Pentest />} />
-              {/* Les routes pour les outils spécifiques seront ajoutées ultérieurement */}
+              <Route path="/terms" element={<TermsOfService />} />
+              <Route path="/privacy" element={<PrivacyPolicy />} />
+              <Route path="/disclaimer" element={<Disclaimer />} />
+              
+              {/* Routes pour les outils de sécurité */}
+              <Route path="/security-tools/password-analyzer" element={<PasswordAnalyzer />} />
+              <Route path="/security-tools/password-generator" element={<PasswordGenerator />} />
+              <Route path="/security-tools/data-breach-checker" element={<DataBreachChecker />} />
+              <Route path="/security-tools/vulnerability-scanner" element={<VulnerabilityScanner />} />
+              <Route path="/security-tools/file-encryption" element={<FileEncryption />} />
+              <Route path="/security-tools/ssl-cert-manager" element={<SSLCertManager />} />
+              <Route path="/security-tools/network-analyzer" element={<NetworkAnalyzer />} />
+              <Route path="/security-tools/malware-scanner" element={<MalwareScanner />} />
+              
               <Route path="*" element={<NotFound />} />
             </Routes>
           </Suspense>
